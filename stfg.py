@@ -28,11 +28,11 @@ if os.stat(pontok_spt).st_size == 0:
     
 if os.stat(beallitasok_spt).st_size == 0:
     f = open(beallitasok_spt, "a")
-    f.write("-5\n10")
+    f.write("-5\n10\n2\n20")
 
 f = open(pontok_spt, "r")
 f = f.read()
-ossz,helyes,hibas = f.split("\n")
+ossz,helyes,hibas,sorrend_pontok = f.split("\n")
 
 def beallitasok_megnyit():
     f = open(beallitasok_spt, "r")
