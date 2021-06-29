@@ -24,7 +24,7 @@ f = open(beallitasok_spt, "a+")
 
 if os.stat(pontok_spt).st_size == 0:
     f = open(pontok_spt, "a")
-    f.write("0\n0\n0")
+    f.write("0\n0\n0\n0")
     
 if os.stat(beallitasok_spt).st_size == 0:
     f = open(beallitasok_spt, "a")
