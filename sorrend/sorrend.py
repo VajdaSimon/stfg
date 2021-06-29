@@ -11,7 +11,7 @@ def gomb(szam):
 
 def sorrend():
     torles()
-    
+    #maxc, maxr, gomb_felirat tömb
     global ossz,eddig,helyes,hibas,sorrend_meret,sorrend_max,sorrend_pontok
     eddig = 0
     sorrend_meret = int(sorrend_meret)
