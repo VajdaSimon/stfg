@@ -1,5 +1,40 @@
-list_of_lines = open("sample.txt", "r").readlines()
-list_of_lines[2] = "Line5\n"
+import tkinter
+import time
 
-a_file = open("sample.txt", "w")
-a_file.writelines(list_of_lines)
+root = tkinter.Tk()
+root.title('Timer')
+root.state('zoomed')
+
+sec = 0
+doTick = True
+
+def tick():
+    global sec,doTick
+    if not doTick:
+        return
+    sec = 0.1
+    sec = round(sec,1)
+    timeLabel.configure(text=sec)
+    root.after(100, tick)
+
+def stop():
+    global doTick,sec
+    sec = 0
+    doTick = False
+
+def start():
+    global doTick
+    doTick = True
+    # Perhaps reset `sec` too?
+    tick()
+
+timeLabel = tkinter.Label(root, fg='green',font=('Helvetica',150))
+timeLabel.pack()
+
+startButton = tkinter.Button(root, text='Start', command=start)
+startButton.pack()
+
+stopButton = tkinter.Button(root, text='Stop', command=stop)
+stopButton.pack()
+
+root.mainloop()

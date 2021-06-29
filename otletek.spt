@@ -1,0 +1,4 @@
+1. #Számolós#-nál a feladat és az entry egymás melett legyenek
+2. A #Sorrend#-nél legyen nehezített verzió is amikor a számok nem egymás után vannak (5,6,7,8),
+    hanem véletlenszerű ugrások vannak köztük (5,9,20,21) esetleg még az is állítható lenne, hogy mekkor legyen a min. és a max. ugrás.
+3. A #Sorrend#-hez betteni egy számlálót aminek adatit estleg menti is, persze a méretnek megfelelően.

@@ -8,6 +8,7 @@ import random
 import time
 
 window = tk.Tk()
+window.resizable(False,False)
 #window.geometry("180x130")
 
 frame = Frame(window)
@@ -52,15 +53,24 @@ def torles():
 
 def vissza():
     torles()
-    window.geometry("180x150")
+    window.geometry("200x150")
     global ossz
-    tk.Label(frame, text="Összpont: " + str(ossz)).pack()
-    tk.Button(frame, text="Számolós", command=szamolos).pack()
-    tk.Button(frame, text="Sorrend", command=sorrend).pack()
-    tk.Label(frame, text="").pack()
-    tk.Button(frame, text="Beállítások", command=beallitasok).pack()
-    tk.Button(frame, text="Kilépés", command=kilepes).pack()
-    
+    padx = 60
+    width = 10
+    label_menu_osszpont = tk.Label(frame, text="Összpont: " + str(ossz), width=width)
+    btn_menu_szamolos = tk.Button(frame, text="Számolós", command=szamolos, width=width)
+    btn_menu_sorrend = tk.Button(frame, text="Sorrend", command=sorrend, width=width)
+    label_menu_ures = tk.Label(frame, text="", width=width)
+    btn_menu_beallitasok = tk.Button(frame, text="Beállítások", command=beallitasok, width=width)
+    btn_menu_kilepes = tk.Button(frame, text="Kilépés", command=kilepes, width=width)
+
+    label_menu_osszpont.grid(row=0, column=0, padx=padx)
+    btn_menu_szamolos.grid(row=1, column=0, padx=padx)
+    btn_menu_sorrend.grid(row=2, column=0, padx=padx)
+    label_menu_ures.grid(row=3, column=0, padx=padx)
+    btn_menu_beallitasok.grid(row=4, column=0, padx=padx)
+    btn_menu_kilepes.grid(row=5, column=0, padx=padx)
+
 def kilepes():
     window.destroy()
 
