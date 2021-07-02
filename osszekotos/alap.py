@@ -26,7 +26,7 @@ def save(event):
     im = ImageGrab.grab((x, y, x1, y1))
     im.save("captured.png")
 
-#push test16
+#push test17
 
 root = tk.Tk()
 root.geometry("720x480")
