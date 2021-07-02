@@ -9,43 +9,17 @@ import time
 
 window = tk.Tk()
 window.resizable(False,False)
-#window.geometry("180x130")
 
 frame = Frame(window)
 frame.pack(side="top", expand=True, fill="both")
 
-pontok_spt = "adatok/pontok.spt"
-beallitasok_spt = "adatok/beallitasok.spt"
-
-if not os.path.exists("adatok"):
-    os.mkdir("adatok")
-
-f = open(pontok_spt, "a+")
-f = open(beallitasok_spt, "a+")
-
-if os.stat(pontok_spt).st_size == 0:
-    f = open(pontok_spt, "a")
-    f.write("0\n0\n0\n0")
-    
-if os.stat(beallitasok_spt).st_size == 0:
-    f = open(beallitasok_spt, "a")
-    f.write("-5\n10\n2\n20")
-
-f = open(pontok_spt, "r")
-f = f.read()
-ossz,helyes,hibas,sorrend_pontok = f.split("\n")
-
-def beallitasok_megnyit():
-    f = open(beallitasok_spt, "r")
-    f = f.read()
-    global szamolos_min,szamolos_max,sorrend_meret,sorrend_max
-    szamolos_min,szamolos_max,sorrend_meret,sorrend_max = f.split("\n")
-
-beallitasok_megnyit()
-
+exec(open("adatok/betoltes.py", "r", encoding='utf8').read())
+exec(open("adatok/kiiras.py", "r", encoding='utf8').read())
 exec(open("szamolos/szamolos.py", "r", encoding='utf8').read())
 exec(open("beallitasok/beallitasok.py", "r", encoding='utf8').read())
 exec(open("sorrend/sorrend.py", "r", encoding='utf8').read())
+
+beallitasok_megnyit()
 
 def torles():
     for widgets in frame.winfo_children():

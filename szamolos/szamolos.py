@@ -9,7 +9,6 @@ def ell2(event):
 window.bind('<Return>', ell2)
 
 def szamolos():
-    for widgets in frame.winfo_children():
-        widgets.destroy()
+    torles()
     window.geometry("210x150")
     feladat()
