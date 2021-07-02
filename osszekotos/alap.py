@@ -27,7 +27,7 @@ def save(event):
     im.save("captured.png")
 
 root = tk.Tk()
-root.geometry("800x600")
+root.geometry("720x480")
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
