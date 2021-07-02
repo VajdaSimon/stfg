@@ -31,6 +31,7 @@ def sorrend():
     gomb_felirat = list(range(szam_min, szam_min + sorrend_meret * sorrend_meret))
     random.shuffle(gomb_felirat)
 
+    #Ez az a szám ami tárolja, hogy éppen hol tart.
     eddig = szam_min
 
     label_osszpont = tk.Label(frame, text="Összpont: " + str(ossz))
