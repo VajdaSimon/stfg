@@ -21,6 +21,7 @@ self_job = "none"
 def sorrend():
     torles()
     global ossz,eddig,helyes,hibas,sorrend_meret,sorrend_max,sorrend_pontok,sec,self_job,label_time
+    sorrend_meret = int(sorrend_meret)
 
     maxr = sorrend_meret
     maxc = sorrend_meret

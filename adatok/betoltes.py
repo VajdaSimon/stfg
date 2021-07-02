@@ -13,7 +13,7 @@ if os.stat(hely).st_size == 0:
     f = open(hely, "a")
     f.write("-5\n10\n2\n20")
 def beallitasok_megnyit():
-    f = open(hely, "r")
+    f = open("adatok/beallitasok.spt", "r")
     f = f.read()
     global szamolos_min,szamolos_max,sorrend_meret,sorrend_max
     szamolos_min,szamolos_max,sorrend_meret,sorrend_max = f.split("\n")
