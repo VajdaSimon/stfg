@@ -8,6 +8,7 @@ f = f.read()
 ossz,helyes,hibas,sorrend_pontok = f.split("\n")
 
 hely = "adatok/beallitasok.spt"
+f = open(hely, "a+")
 if os.stat(hely).st_size == 0:
     f = open(hely, "a")
     f.write("-5\n10\n2\n20")
