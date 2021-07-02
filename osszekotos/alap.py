@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import ImageGrab
 
+
 lastx, lasty = 0, 0
 
 
@@ -24,7 +25,6 @@ def save(event):
     x1=x+canvas.winfo_width()
     y1=y+canvas.winfo_height()
     im = ImageGrab.grab((x, y, x1, y1))
-    im.save("captured.png")
 
 root = tk.Tk()
 root.geometry("720x480")
