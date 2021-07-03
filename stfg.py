@@ -6,6 +6,7 @@ from tkinter import *
 from functools import partial
 import random
 import time
+import win32gui, win32con
 
 window = tk.Tk()
 window.resizable(False,False)
@@ -20,6 +21,10 @@ exec(open("beallitasok/beallitasok.py", "r", encoding='utf8').read())
 exec(open("sorrend/sorrend.py", "r", encoding='utf8').read())
 
 beallitasok_megnyit()
+
+if int(terminal) == 1:
+    hide = win32gui.GetForegroundWindow()
+    win32gui.ShowWindow(hide , win32con.SW_HIDE)
 
 def torles():
     for widgets in frame.winfo_children():

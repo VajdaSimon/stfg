@@ -1,34 +1,62 @@
 import tkinter as tk
-from tkinter import *
-from random import randint
-from functools import partial
-import random
 
-window = tk.Tk()
 
-def gomb(szam):
-    print(str(szam))
+class Keep(tk.Tk):
 
-def sorrend():
-    verzio = 3
-    
-    row = [0,1,0,1]
-    column = [0,0,1,1]
-    random.shuffle(row)
-    random.shuffle(column)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-    szam_min = randint(1, 10)
-    
-    print(row)
-    print(column)
+        self.shared_data ={
+            "email": tk.StringVar(),
+            "password": tk.StringVar()
+        }
 
-    for szam in range(4):
-        tk.Button(text=str(szam_min + szam), command=partial(gomb, szam), height=8, width=16, font=1).pack()  #.grid(row=row[szam], column=column[szam])
+        self.frames = {
+            'StartPage': StartPage(self, self),
+            'PageTwo': PageTwo(self, self),
+        }
 
-# tk.Button(text="2", command=lambda: gomb(2), height=8, width=16).grid(row=1, column=0)
-# tk.Button(text="3", command=lambda: gomb(3), height=8, width=16).grid(row=0, column=1)
-# tk.Button(text="4", command=lambda: gomb(4), height=8, width=16).grid(row=1, column=1)
+        self.current_frame = None
+        self.show_frame('StartPage')
 
-sorrend()
+    def show_frame(self, name):
+        if self.current_frame:
+            self.current_frame.forget()
+        self.current_frame = self.frames[name]
+        self.current_frame.pack()
 
-window.mainloop()
+        self.current_frame.update_widgets() # <-- update data in widgets
+
+
+class StartPage(tk.Frame):
+
+    def __init__(self, parent, controller):
+        super().__init__(parent)
+        self.controller = controller
+
+        self.entry1 = tk.Entry(self, textvariable=self.controller.shared_data["email"])
+        self.entry1.pack()
+        entry2 = tk.Entry(self, show='*')
+        entry2.pack()
+        button = tk.Button(self, text="Submit", command=lambda:controller.show_frame("PageTwo"))
+        button.pack()
+
+    def update_widgets(self):
+        pass
+
+class PageTwo(tk.Frame):
+
+    def __init__(self, parent, controller):
+        super().__init__(parent)
+        self.controller = controller
+
+        self.label = tk.Label(self, text="") # <-- create empty label
+        self.label.pack()
+
+    def update_widgets(self):
+        self.label["text"] = "Welcome, {}".format(self.controller.shared_data["email"].get()) # <-- update text in label
+
+
+if __name__ == "__main__":
+    keep = Keep()
+    keep.mainloop()
