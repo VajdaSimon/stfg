@@ -1,5 +1,7 @@
 def gomb(szam):
     global ossz,eddig,helyes,hibas,sorrend_meret,sorrend_pontok,gomb_felirat,szam_min,sec,sorrend_best_ido
+    if eddig != szam:
+        eddig = szam_min
     for ell in gomb_felirat:
         if eddig == szam and szam == ell:
             eddig += 1
@@ -11,7 +13,7 @@ def gomb(szam):
         if str(sorrend_best_ido[sorrend_meret - 2]) == "x":
             sorrend_best_ido[sorrend_meret - 2] = sec
             sorrend_best_ido_kiiras(sorrend_meret - 2, sec)
-        if float(sorrend_best_ido[sorrend_meret - 2]) > sec:
+        elif float(sorrend_best_ido[sorrend_meret - 2]) > sec:
             sorrend_best_ido[sorrend_meret - 2] = sec
             sorrend_best_ido_kiiras(sorrend_meret - 2, sec)
         sorrend()
@@ -39,8 +41,10 @@ def sorrend():
     for szam in range(sorrend_meret * sorrend_meret):
         tk.Button(frame, text=str(gomb_felirat[szam]), command=partial(gomb, gomb_felirat[szam]), height=8, width=16).grid(row=int(szam // maxr + 1), column=int(szam % maxr))
     btn_vissza = tk.Button(frame, text="Vissza", command=vissza2)
-    #btn_ujratoltes = tk.Button(frame, text="Újra töltés", command=sorrend)
-    window.geometry(str(130 * sorrend_meret) + "x" + str(160 * sorrend_meret))
+
+    winx = [245,367,489,612]
+    winy = [315,450,582,717]
+    window.geometry(str(winx[sorrend_meret - 2])+ "x" + str(winy[sorrend_meret - 2]))
 
     label_osszpont.grid(row=0, column=0)
     label_pontok.grid(row=0, column=1)
@@ -48,6 +52,7 @@ def sorrend():
     btn_vissza.grid(row=sorrend_meret + 1, column=0)
     label_time = tk.Label(frame)
     label_time.grid(row=sorrend_meret + 1, column=1)
+    
     if self_job is not None:
         window.after_cancel(self_job)
         self_job = None
